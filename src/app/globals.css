@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: var(--font-heading, "Oswald"), "Georgia", "Times New Roman", serif;
+  --font-body: var(--font-body, "Raleway"), "Helvetica Neue", "Arial", sans-serif;
+
+  /* Fire palette */
+  --color-fire-50: #fff7ed;
+  --color-fire-100: #ffedd5;
+  --color-fire-200: #fed7aa;
+  --color-fire-300: #fdba74;
+  --color-fire-400: #fb923c;
+  --color-fire-500: #f97316;
+  --color-fire-600: #ea580c;
+  --color-fire-700: #c2410c;
+  --color-fire-800: #9a3412;
+  --color-fire-900: #7c2d12;
+
+  /* Ember golds */
+  --color-ember-300: #fcd34d;
+  --color-ember-400: #fbbf24;
+  --color-ember-500: #f59e0b;
+
+  /* Charcoal / Ash */
+  --color-ash-50: #fafaf9;
+  --color-ash-100: #f5f5f4;
+  --color-ash-200: #e7e5e4;
+  --color-ash-800: #292524;
+  --color-ash-900: #1c1917;
+  --color-ash-950: #0c0a09;
+
+  /* Smoke */
+  --color-smoke-50: #18181b;
+  --color-smoke-100: #27272a;
+  --color-smoke-200: #3f3f46;
+
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-fade-up: fade-up 0.5s ease-out;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ash-200);
+  background-color: var(--color-ash-950);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ---- Keyframe animations ---- */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- CTA button ---- */
+.btn-fire {
+  background: linear-gradient(135deg, #ea580c 0%, #f97316 50%, #fb923c 100%);
+  transition: all 0.2s ease;
+}
+
+.btn-fire:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.3);
+}
+
+/* ---- Glow ring for highlighted cards ---- */
+.ring-fire {
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ---- Section backgrounds ---- */
+.bg-warm {
+  background: linear-gradient(180deg, #1c1917 0%, #292524 100%);
+}
+
+.bg-ember-glow {
+  background: radial-gradient(ellipse at 50% 100%, rgba(249, 115, 22, 0.06) 0%, transparent 60%);
+}

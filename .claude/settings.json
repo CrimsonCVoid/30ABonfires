@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(winget install --id GitHub.cli --accept-source-agreements --accept-package-agreements)",
+      "Bash(cmd.exe /c \"where gh\")",
+      "Read(//tmp/**)",
+      "Read(//c/tmp/**)",
+      "Bash(GH=/c/Users/wcart/bin/gh.exe)",
+      "Bash($GH auth status)"
+    ]
+  }
+}

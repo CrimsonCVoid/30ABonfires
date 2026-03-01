@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#1c1917"/>
+  <circle cx="400" cy="420" r="55" fill="#f59e0b" opacity="0.6"/>
+  <rect x="280" y="330" width="30" height="50" rx="4" fill="#a8a29e" opacity="0.5" transform="rotate(-15 295 355)"/>
+  <rect x="340" y="325" width="30" height="50" rx="4" fill="#a8a29e" opacity="0.5" transform="rotate(-5 355 350)"/>
+  <rect x="430" y="325" width="30" height="50" rx="4" fill="#a8a29e" opacity="0.5" transform="rotate(5 445 350)"/>
+  <rect x="490" y="330" width="30" height="50" rx="4" fill="#a8a29e" opacity="0.5" transform="rotate(15 505 355)"/>
+  <text x="400" y="260" text-anchor="middle" fill="#fefce8" font-family="sans-serif" font-size="20" opacity="0.8">Adirondack Chairs — Grayton Beach</text>
+  <text x="400" y="290" text-anchor="middle" fill="#a8a29e" font-family="sans-serif" font-size="12" opacity="0.5">Replace with real photo</text>
+</svg>

@@ -4,14 +4,14 @@ import { MobileNav } from "./MobileNav";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 bg-ash-950/95 backdrop-blur-lg border-b border-fire-900/20">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-lg border-b border-stone-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18">
           <Link
             href="/"
             className="text-2xl font-bold tracking-wider transition-colors uppercase"
           >
-            <span className="bg-gradient-to-r from-fire-400 via-ember-400 to-fire-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-fire-600 via-fire-500 to-ember-500 bg-clip-text text-transparent">
               30A Bonfires
             </span>
           </Link>
@@ -21,7 +21,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm uppercase tracking-[0.15em] text-ash-200/80 hover:text-fire-400 transition-colors font-medium"
+                className="text-sm uppercase tracking-[0.15em] text-navy-700 hover:text-fire-600 transition-colors font-medium"
               >
                 {link.label}
               </Link>

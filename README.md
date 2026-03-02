@@ -8,6 +8,7 @@ Marketing website for 30A Bonfire Service — a beach bonfire setup service alon
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v4
 - **Lead Capture:** Supabase
+- **Lead Notifications:** Resend
 - **Booking:** FareHarbor (external checkout link)
 - **Deployment:** Vercel
 
@@ -34,7 +35,12 @@ cp .env.example .env.local
 | `NEXT_PUBLIC_SITE_URL` | Your production URL (e.g., `https://30abonfireservice.com`) |
 | `NEXT_PUBLIC_FAREHARBOR_CHECKOUT_URL` | Your FareHarbor booking page URL |
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous/public key |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous/public key (legacy name) |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase publishable key (new format, `sb_publishable_...`) |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key (server-only, used for duplicate checks + richer inserts) |
+| `RESEND_API_KEY` | Resend API key for lead notification emails |
+| `CONTACT_NOTIFICATION_FROM_EMAIL` | Verified Resend sender (e.g. `30A Bonfires <leads@yourdomain.com>`) |
+| `CONTACT_NOTIFICATION_TO_EMAIL` | Inbox that should receive lead alerts (defaults to `siteConfig.email`) |
 
 ### 3. Set up Supabase (lead capture)
 
@@ -50,7 +56,9 @@ CREATE TABLE leads (
   preferred_town TEXT,
   date_requested TEXT,
   message TEXT,
-  source_page TEXT
+  source_page TEXT,
+  status TEXT DEFAULT 'new',
+  metadata JSONB DEFAULT '{}'::jsonb
 );
 
 -- Enable Row Level Security
@@ -59,11 +67,30 @@ ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
 -- Allow anonymous inserts (for the contact form)
 CREATE POLICY "Allow anonymous inserts" ON leads
   FOR INSERT WITH CHECK (true);
+
+-- Helpful index for duplicate-check logic
+CREATE INDEX leads_email_created_at_idx ON leads (email, created_at DESC);
 ```
 
-> **Note:** The site works without Supabase configured — the contact form will log submissions to the console in development.
+If you already created `leads` without `status`/`metadata`, run:
 
-### 4. Run the dev server
+```sql
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS status TEXT DEFAULT 'new';
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}'::jsonb;
+CREATE INDEX IF NOT EXISTS leads_email_created_at_idx ON leads (email, created_at DESC);
+```
+
+### 4. Set up lead notification email (optional, recommended)
+
+This project can email every contact submission through Resend.
+
+1. Verify a sender domain in Resend
+2. Set `RESEND_API_KEY`, `CONTACT_NOTIFICATION_FROM_EMAIL`, and `CONTACT_NOTIFICATION_TO_EMAIL`
+3. Submit a test lead from `/contact`
+
+If Resend is not configured, submissions still save to Supabase.
+
+### 5. Run the dev server
 
 ```bash
 npm run dev
@@ -71,7 +98,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-### 5. Build for production
+### 6. Build for production
 
 ```bash
 npm run build
@@ -105,7 +132,9 @@ src/
 │   ├── faqs-data.ts      # FAQ content
 │   ├── gallery-data.ts   # Gallery image metadata
 │   ├── schemas.ts        # JSON-LD schema generators
-│   ├── supabase.ts       # Supabase client
+│   ├── supabase.ts       # Public Supabase client
+│   ├── supabase-server.ts # Server-only Supabase service-role client
+│   ├── contact-notifications.ts # Lead email notifications
 │   └── metadata.ts       # Shared metadata helpers
 └── actions/              # Server actions
     └── contact.ts        # Contact form submission

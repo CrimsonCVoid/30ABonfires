@@ -7,18 +7,34 @@ type HeroSectionProps = {
   title: string;
   subtitle?: string;
   backgroundImage?: string;
+  backgroundVideo?: string;
   children?: React.ReactNode;
   fullHeight?: boolean;
 };
 
-export function HeroSection({ title, subtitle, backgroundImage, children, fullHeight = false }: HeroSectionProps) {
+export function HeroSection({ title, subtitle, backgroundImage, backgroundVideo, children, fullHeight = false }: HeroSectionProps) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
   return (
     <section className={`relative text-white overflow-hidden bg-ash-950 ${fullHeight ? "min-h-screen flex items-center justify-center" : "py-36 sm:py-44 lg:py-56"}`}>
-      {/* Background image with Ken Burns effect */}
-      {backgroundImage && (
+      {/* Background video */}
+      {backgroundVideo && (
+        <div className="absolute inset-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={backgroundVideo} type="video/mp4" />
+          </video>
+        </div>
+      )}
+
+      {/* Background image fallback (only if no video) */}
+      {backgroundImage && !backgroundVideo && (
         <div className="absolute inset-0">
           <Image
             src={backgroundImage}
@@ -31,13 +47,13 @@ export function HeroSection({ title, subtitle, backgroundImage, children, fullHe
         </div>
       )}
 
-      {/* Heavy dark overlay */}
-      {backgroundImage && (
+      {/* Dark overlay */}
+      {(backgroundImage || backgroundVideo) && (
         <div className="absolute inset-0 bg-ash-950/55" />
       )}
 
       {/* Layered fire gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ash-950/90 via-transparent to-ash-950" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ash-950/90 via-transparent to-ash-950/80" />
       <div className="absolute inset-0 bg-gradient-to-t from-fire-900/50 via-transparent to-transparent" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_120%,rgba(249,115,22,0.30)_0%,transparent_55%)]" />
 
@@ -45,7 +61,7 @@ export function HeroSection({ title, subtitle, backgroundImage, children, fullHe
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_0%_50%,rgba(12,10,9,0.6)_0%,transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_50%,rgba(12,10,9,0.6)_0%,transparent_50%)]" />
 
-      {/* Floating ember particles - more and bigger */}
+      {/* Floating ember particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="absolute bottom-10 left-[10%] w-2.5 h-2.5 bg-fire-400 rounded-full animate-ember-rise opacity-0" />
         <div className="absolute bottom-10 left-[25%] w-2 h-2 bg-ember-400 rounded-full animate-ember-rise opacity-0" style={{ animationDelay: "1s" }} />
@@ -59,19 +75,19 @@ export function HeroSection({ title, subtitle, backgroundImage, children, fullHe
         <div className="absolute bottom-10 left-[65%] w-1 h-1 bg-ember-300 rounded-full animate-ember-rise opacity-0" style={{ animationDelay: "3.5s" }} />
         <div className="absolute bottom-10 left-[80%] w-2 h-2 bg-fire-500/70 rounded-full animate-ember-rise opacity-0" style={{ animationDelay: "5.5s" }} />
 
-        {/* Floating ambient glows - larger and more dramatic */}
+        {/* Floating ambient glows */}
         <div className="absolute top-1/3 left-1/4 w-6 h-6 bg-fire-500/15 rounded-full animate-float blur-md" />
         <div className="absolute top-1/2 right-1/3 w-8 h-8 bg-ember-400/10 rounded-full animate-float blur-lg" style={{ animationDelay: "2s" }} />
         <div className="absolute top-1/4 right-1/5 w-4 h-4 bg-fire-400/15 rounded-full animate-float blur-md" style={{ animationDelay: "4s" }} />
         <div className="absolute bottom-1/3 left-1/3 w-10 h-10 bg-fire-600/8 rounded-full animate-float blur-xl" style={{ animationDelay: "1s" }} />
       </div>
 
-      {/* Bottom fire glow line - stronger */}
+      {/* Bottom fire glow line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-fire-500/70 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-fire-600/15 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Title - dramatically bigger */}
+        {/* Title */}
         <h1
           className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[0.95] tracking-tight transition-all duration-[1200ms] ease-out ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"

@@ -47,14 +47,14 @@ export default function AboutPage() {
       />
 
       {/* Our Story */}
-      <section className="py-24 sm:py-32 bg-ash-950">
+      <section className="py-24 sm:py-32 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll animation="reveal"><h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-ash-100 mb-8 tracking-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-900 mb-8 tracking-tight"
           >
             Our Story
           </h2>
-          <div className="prose prose-invert prose-lg max-w-none prose-p:text-ash-200/70 prose-p:font-light prose-p:leading-relaxed">
+          <div className="prose prose-lg max-w-none prose-p:text-stone-500 prose-p:font-light prose-p:leading-relaxed">
             <p>
               30A Bonfire Service started because we believed one of the best things about
               the Emerald Coast — sitting around a fire on the beach — shouldn&apos;t require
@@ -62,7 +62,7 @@ export default function AboutPage() {
               ash.
             </p>
             <p>
-              We&apos;re a service division of <strong className="text-fire-400 font-semibold">Destin Bonfire Company</strong>,
+              We&apos;re a service division of <strong className="text-fire-600 font-semibold">Destin Bonfire Company</strong>,
               which has been providing beach bonfire experiences along the Northwest Florida
               coast. As demand grew from vacationers and locals along Scenic Highway 30A,
               we created a dedicated service focused exclusively on the 30A corridor.
@@ -87,7 +87,7 @@ export default function AboutPage() {
           className="object-cover animate-[ken-burns_25s_ease-in-out_infinite_alternate]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ash-950 via-transparent to-ash-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
         <div className="absolute inset-0 flex items-center justify-center">
           <AnimateOnScroll animation="reveal">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center text-white text-fire-shadow uppercase tracking-wide px-4">
@@ -101,7 +101,7 @@ export default function AboutPage() {
       <section className="py-24 sm:py-32 bg-warm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll animation="reveal">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-ash-100 text-center mb-16 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-900 text-center mb-16 tracking-tight">
               What We Believe
             </h2>
           </AnimateOnScroll>
@@ -124,10 +124,10 @@ export default function AboutPage() {
                 key={item.title}
                 className="glass-card rounded-xl p-8 hover:border-fire-500/40 transition-all duration-500"
               >
-                <h3 className="text-2xl font-bold text-ash-100 mb-4 uppercase tracking-wide">
+                <h3 className="text-2xl font-bold text-stone-900 mb-4 uppercase tracking-wide">
                   {item.title}
                 </h3>
-                <p className="text-ash-200/60 font-light leading-relaxed">{item.desc}</p>
+                <p className="text-stone-500 font-light leading-relaxed">{item.desc}</p>
               </div>
             ))}</StaggerChildren>
           </div>
@@ -135,13 +135,13 @@ export default function AboutPage() {
       </section>
 
       {/* Where We Serve */}
-      <section className="py-24 sm:py-32 bg-ash-950 bg-ember-glow">
+      <section className="py-24 sm:py-32 bg-white bg-ember-glow">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll animation="fade-right">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-ash-100 mb-8 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-900 mb-8 tracking-tight">
               Where We Serve
             </h2>
-            <p className="text-ash-200/50 text-lg mb-8 font-light">
+            <p className="text-stone-500 text-lg mb-8 font-light">
               Our service area covers the entire Scenic Highway 30A corridor in South Walton
               County, Florida. We set up bonfires in all 15 beach communities:
             </p>
@@ -167,7 +167,7 @@ export default function AboutPage() {
               <a
                 key={town}
                 href={`/areas/${town.toLowerCase().replace(/\s+/g, "-")}`}
-                className="text-fire-400 hover:text-fire-300 hover:underline font-medium tracking-wide text-sm uppercase"
+                className="text-fire-600 hover:text-fire-500 hover:underline font-medium tracking-wide text-sm uppercase"
               >
                 {town}
               </a>
@@ -180,15 +180,15 @@ export default function AboutPage() {
       <section className="py-24 sm:py-32 bg-warm">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll animation="fade-up">
-            <h2 className="text-4xl sm:text-5xl font-bold text-ash-100 mb-8 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-bold text-stone-900 mb-8 tracking-tight">
               What If It Rains?
             </h2>
-            <p className="text-ash-200/50 text-lg mb-6 font-light">
+            <p className="text-stone-500 text-lg mb-6 font-light">
               Gulf Coast weather can change quickly, and we get it — you don&apos;t want to
               stress about a forecast.
             </p>
           </AnimateOnScroll>
-          <ul className="space-y-5 text-ash-200/70">
+          <ul className="space-y-5 text-stone-600">
             {[
               { num: "01", bold: "We monitor the weather", text: "leading up to your bonfire and will contact you if conditions look unfavorable." },
               { num: "02", bold: "Free rescheduling", text: "for any weather-related cancellation. No fees, no hassle." },
@@ -198,7 +198,7 @@ export default function AboutPage() {
                 <li className="flex items-start gap-5">
                   <span className="text-3xl font-bold text-fire-500/30 tracking-tighter">{item.num}</span>
                   <span className="font-light">
-                    <strong className="text-ash-100 font-semibold">{item.bold}</strong> {item.text}
+                    <strong className="text-stone-900 font-semibold">{item.bold}</strong> {item.text}
                   </span>
                 </li>
               </AnimateOnScroll>
@@ -208,7 +208,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-28 sm:py-36 text-white text-center overflow-hidden">
+      <section className="relative py-28 sm:py-36 text-center overflow-hidden">
         <Image
           src="/images/gallery/IMG_2687.JPG"
           alt=""
@@ -216,16 +216,16 @@ export default function AboutPage() {
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-ash-950/75" />
-        <div className="absolute inset-0 bg-gradient-to-t from-fire-900/30 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-white/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-fire-900/20 via-transparent to-white/60" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll animation="reveal">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-              <span className="bg-gradient-to-r from-fire-100 via-ember-300 to-fire-200 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-fire-600 via-ember-500 to-fire-500 bg-clip-text text-transparent">
                 Let Us Build Your Bonfire
               </span>
             </h2>
-            <p className="text-ash-100/80 text-xl mb-10 font-light">
+            <p className="text-stone-600 text-xl mb-10 font-light">
               Whether it&apos;s a quiet evening for two or a celebration for twenty.
             </p>
           </AnimateOnScroll>

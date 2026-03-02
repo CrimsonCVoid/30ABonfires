@@ -40,7 +40,7 @@ export default function GalleryPage() {
       />
 
       {/* Filterable Gallery with Lightbox */}
-      <section className="py-24 sm:py-32 bg-ash-950">
+      <section className="py-24 sm:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll animation="fade-up">
             <FilterableGallery images={galleryImages} />
@@ -52,7 +52,7 @@ export default function GalleryPage() {
       <section className="py-24 sm:py-32 bg-warm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll animation="reveal">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-ash-100 text-center mb-16 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-900 text-center mb-16 tracking-tight">
               Perfect for Every Occasion
             </h2>
           </AnimateOnScroll>
@@ -88,10 +88,10 @@ export default function GalleryPage() {
                   key={item.title}
                   className="glass-card rounded-xl p-8 hover:border-fire-500/40 transition-all duration-500 group"
                 >
-                  <h3 className="text-xl font-bold text-ash-100 mb-3 group-hover:text-fire-400 transition-colors uppercase tracking-wide">
+                  <h3 className="text-xl font-bold text-stone-900 mb-3 group-hover:text-fire-600 transition-colors uppercase tracking-wide">
                     {item.title}
                   </h3>
-                  <p className="text-ash-200/60 text-sm font-light leading-relaxed">{item.desc}</p>
+                  <p className="text-stone-500 text-sm font-light leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </StaggerChildren>
@@ -100,7 +100,7 @@ export default function GalleryPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-28 sm:py-36 text-white text-center overflow-hidden">
+      <section className="relative py-28 sm:py-36 text-center overflow-hidden">
         <Image
           src="/images/gallery/IMG_8398.JPG"
           alt=""
@@ -108,16 +108,16 @@ export default function GalleryPage() {
           className="object-cover animate-[ken-burns_25s_ease-in-out_infinite_alternate]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-ash-950/70" />
-        <div className="absolute inset-0 bg-gradient-to-t from-fire-900/30 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-white/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-fire-900/20 via-transparent to-white/60" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll animation="reveal">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-              <span className="bg-gradient-to-r from-fire-100 via-ember-300 to-fire-200 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-fire-600 via-ember-500 to-fire-500 bg-clip-text text-transparent">
                 Want This for Your Night on 30A?
               </span>
             </h2>
-            <p className="text-ash-100/80 text-xl mb-10 font-light">
+            <p className="text-stone-600 text-xl mb-10 font-light">
               Book your beach bonfire and create your own memories by the fire.
             </p>
           </AnimateOnScroll>

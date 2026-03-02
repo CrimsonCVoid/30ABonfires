@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { submitContactForm, type ContactFormState } from "@/actions/contact";
 import { towns, siteConfig } from "@/lib/config";
 
@@ -9,6 +9,7 @@ type ContactFormProps = {
 };
 
 export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
+  const [submittedAt] = useState(() => new Date().toISOString());
   const [state, formAction, isPending] = useActionState<
     ContactFormState,
     FormData
@@ -16,9 +17,9 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
 
   if (state?.success) {
     return (
-      <div className="bg-ash-900 border border-fire-500/30 rounded-xl p-8 text-center">
+      <div className="bg-stone-50 border border-fire-500/30 rounded-xl p-8 text-center">
         <svg
-          className="w-12 h-12 text-fire-400 mx-auto mb-4"
+          className="w-12 h-12 text-fire-500 mx-auto mb-4"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -30,10 +31,10 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
             d="M5 13l4 4L19 7"
           />
         </svg>
-        <h3 className="text-xl font-bold text-ash-100 mb-2">
+        <h3 className="text-xl font-bold text-stone-900 mb-2">
           Message Sent!
         </h3>
-        <p className="text-ash-200/70 mb-6">
+        <p className="text-stone-500 mb-6">
           Thank you for reaching out. We&apos;ll get back to you shortly. In the
           meantime, you can go ahead and book your bonfire now.
         </p>
@@ -54,7 +55,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
     <form action={formAction} className="space-y-5">
       {state?.error && (
         <div
-          className="bg-red-900/30 border border-red-500/40 rounded-lg p-4 text-red-300 text-sm"
+          className="bg-red-50 border border-red-300 rounded-lg p-4 text-red-700 text-sm"
           role="alert"
         >
           {state.error}
@@ -62,12 +63,21 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
       )}
 
       <input type="hidden" name="source_page" value={sourcePage} />
+      <input type="hidden" name="submitted_at" value={submittedAt} />
+      <input
+        type="text"
+        name="website"
+        autoComplete="off"
+        tabIndex={-1}
+        className="hidden"
+        aria-hidden="true"
+      />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-ash-200 mb-1"
+            className="block text-sm font-medium text-stone-700 mb-1"
           >
             Name <span className="text-fire-500">*</span>
           </label>
@@ -77,7 +87,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
             name="name"
             required
             disabled={isPending}
-            className="w-full rounded-lg border border-ash-800 bg-ash-900 px-4 py-3 text-ash-100 placeholder-ash-200/40 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
+            className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder-stone-400 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
             placeholder="Your name"
           />
         </div>
@@ -85,7 +95,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
         <div>
           <label
             htmlFor="phone"
-            className="block text-sm font-medium text-ash-200 mb-1"
+            className="block text-sm font-medium text-stone-700 mb-1"
           >
             Phone
           </label>
@@ -94,7 +104,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
             id="phone"
             name="phone"
             disabled={isPending}
-            className="w-full rounded-lg border border-ash-800 bg-ash-900 px-4 py-3 text-ash-100 placeholder-ash-200/40 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
+            className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder-stone-400 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
             placeholder="(850) 555-0000"
           />
         </div>
@@ -103,7 +113,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-ash-200 mb-1"
+          className="block text-sm font-medium text-stone-700 mb-1"
         >
           Email <span className="text-fire-500">*</span>
         </label>
@@ -113,7 +123,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
           name="email"
           required
           disabled={isPending}
-          className="w-full rounded-lg border border-ash-800 bg-ash-900 px-4 py-3 text-ash-100 placeholder-ash-200/40 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
+          className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder-stone-400 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
           placeholder="you@email.com"
         />
       </div>
@@ -122,7 +132,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
         <div>
           <label
             htmlFor="preferred_town"
-            className="block text-sm font-medium text-ash-200 mb-1"
+            className="block text-sm font-medium text-stone-700 mb-1"
           >
             Preferred Location
           </label>
@@ -130,7 +140,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
             id="preferred_town"
             name="preferred_town"
             disabled={isPending}
-            className="w-full rounded-lg border border-ash-800 bg-ash-900 px-4 py-3 text-ash-100 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
+            className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
           >
             <option value="">Select a town...</option>
             {towns.map((town) => (
@@ -144,7 +154,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
         <div>
           <label
             htmlFor="date_requested"
-            className="block text-sm font-medium text-ash-200 mb-1"
+            className="block text-sm font-medium text-stone-700 mb-1"
           >
             Preferred Date
           </label>
@@ -153,7 +163,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
             id="date_requested"
             name="date_requested"
             disabled={isPending}
-            className="w-full rounded-lg border border-ash-800 bg-ash-900 px-4 py-3 text-ash-100 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
+            className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
           />
         </div>
       </div>
@@ -161,7 +171,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
       <div>
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-ash-200 mb-1"
+          className="block text-sm font-medium text-stone-700 mb-1"
         >
           Message
         </label>
@@ -170,7 +180,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
           name="message"
           rows={4}
           disabled={isPending}
-          className="w-full rounded-lg border border-ash-800 bg-ash-900 px-4 py-3 text-ash-100 placeholder-ash-200/40 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50 resize-vertical"
+          className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder-stone-400 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50 resize-vertical"
           placeholder="Tell us about your event—group size, occasion, special requests..."
         />
       </div>
@@ -183,11 +193,11 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
         {isPending ? "Sending..." : "Send Message"}
       </button>
 
-      <p className="text-sm text-ash-200/40 text-center">
+      <p className="text-sm text-stone-400 text-center">
         Or book directly:{" "}
         <a
           href={siteConfig.fareharborUrl}
-          className="text-fire-400 hover:underline font-medium"
+          className="text-fire-600 hover:underline font-medium"
           target="_blank"
           rel="noopener noreferrer"
         >

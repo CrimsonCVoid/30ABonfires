@@ -4,10 +4,13 @@ export const siteConfig = {
   tagline: "Beach Bonfires Along Scenic Highway 30A",
   url:
     process.env.NEXT_PUBLIC_SITE_URL || "https://30abonfireservice.com",
+  fareharborShortname:
+    process.env.NEXT_PUBLIC_FAREHARBOR_SHORTNAME || "destinbonfirecompany",
   fareharborUrl:
     process.env.NEXT_PUBLIC_FAREHARBOR_CHECKOUT_URL ||
-    "https://fareharbor.com/embeds/book/PLACEHOLDER",
-  phone: "(850) 555-0130", // TODO: Replace with real phone
+    `https://fareharbor.com/embeds/book/${process.env.NEXT_PUBLIC_FAREHARBOR_SHORTNAME || "destinbonfirecompany"}/`,
+  fareharborRef: process.env.NEXT_PUBLIC_FAREHARBOR_REF || "30abonfireservice",
+  phone: "(850) 706-1325",
   email: "hello@30abonfires.com", // TODO: Replace with real email
   address: {
     street: "123 Scenic Hwy 30A", // TODO: Replace

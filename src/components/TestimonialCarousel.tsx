@@ -84,7 +84,7 @@ export function TestimonialCarousel({
             className={`h-2 rounded-full transition-all duration-500 ${
               i === current
                 ? "bg-fire-500 w-8"
-                : "bg-ash-800 hover:bg-fire-700 w-2"
+                : "bg-stone-300 hover:bg-fire-400 w-2"
             }`}
             aria-label={`Go to testimonial ${i + 1}`}
           />
@@ -96,7 +96,7 @@ export function TestimonialCarousel({
         onClick={() =>
           goTo((current - 1 + testimonials.length) % testimonials.length)
         }
-        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 hidden lg:flex items-center justify-center w-12 h-12 rounded-full glass-card text-ash-200/60 hover:text-fire-400 hover:border-fire-500/50 hover:shadow-lg hover:shadow-fire-600/10 transition-all duration-300"
+        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 hidden lg:flex items-center justify-center w-12 h-12 rounded-full glass-card text-stone-400 hover:text-fire-600 hover:border-fire-500/50 hover:shadow-lg hover:shadow-fire-600/10 transition-all duration-300"
         aria-label="Previous testimonials"
       >
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -105,7 +105,7 @@ export function TestimonialCarousel({
       </button>
       <button
         onClick={next}
-        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 hidden lg:flex items-center justify-center w-12 h-12 rounded-full glass-card text-ash-200/60 hover:text-fire-400 hover:border-fire-500/50 hover:shadow-lg hover:shadow-fire-600/10 transition-all duration-300"
+        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 hidden lg:flex items-center justify-center w-12 h-12 rounded-full glass-card text-stone-400 hover:text-fire-600 hover:border-fire-500/50 hover:shadow-lg hover:shadow-fire-600/10 transition-all duration-300"
         aria-label="Next testimonials"
       >
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -123,7 +123,7 @@ function TestimonialSlide({ testimonial }: { testimonial: Testimonial }) {
         {Array.from({ length: 5 }).map((_, i) => (
           <svg
             key={i}
-            className={`w-5 h-5 ${i < testimonial.rating ? "text-ember-400" : "text-ash-800"}`}
+            className={`w-5 h-5 ${i < testimonial.rating ? "text-ember-400" : "text-stone-200"}`}
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -131,13 +131,13 @@ function TestimonialSlide({ testimonial }: { testimonial: Testimonial }) {
           </svg>
         ))}
       </div>
-      <p className="text-ash-200/80 leading-relaxed flex-1 font-light text-lg italic">
+      <p className="text-stone-600 leading-relaxed flex-1 font-light text-lg italic">
         &ldquo;{testimonial.text}&rdquo;
       </p>
-      <div className="mt-5 pt-5 border-t border-fire-900/20 text-sm">
-        <span className="font-bold text-ash-100 uppercase tracking-wider">{testimonial.name}</span>
+      <div className="mt-5 pt-5 border-t border-stone-200 text-sm">
+        <span className="font-bold text-stone-900 uppercase tracking-wider">{testimonial.name}</span>
         {testimonial.location && (
-          <span className="text-ash-200/40 ml-2"> &mdash; {testimonial.location}</span>
+          <span className="text-stone-400 ml-2"> &mdash; {testimonial.location}</span>
         )}
       </div>
     </div>

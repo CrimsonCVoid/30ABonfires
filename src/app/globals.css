@@ -21,6 +21,32 @@
   --color-ember-400: #fbbf24;
   --color-ember-500: #f59e0b;
 
+  /* Navy — coastal deep blue */
+  --color-navy-50: #f0f4f8;
+  --color-navy-100: #d9e2ec;
+  --color-navy-200: #bcccdc;
+  --color-navy-300: #9fb3c8;
+  --color-navy-400: #627d98;
+  --color-navy-500: #486581;
+  --color-navy-600: #334e68;
+  --color-navy-700: #243b53;
+  --color-navy-800: #1a2e44;
+  --color-navy-900: #102a43;
+
+  /* Sunset — warm pinks and corals */
+  --color-sunset-300: #fda4af;
+  --color-sunset-400: #fb7185;
+  --color-sunset-500: #f43f5e;
+
+  /* Coral — warm tropical accent */
+  --color-coral-400: #ff8a65;
+  --color-coral-500: #ff7043;
+
+  /* Sand — warm creamy tones */
+  --color-sand-100: #fefce8;
+  --color-sand-200: #fef9c3;
+  --color-sand-300: #fde68a;
+
   /* Charcoal / Ash */
   --color-ash-50: #fafaf9;
   --color-ash-100: #f5f5f4;
@@ -44,8 +70,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--color-ash-200);
-  background-color: var(--color-ash-950);
+  color: #44403c;
+  background-color: #ffffff;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -58,9 +84,19 @@ h1, h2, h3, h4, h5, h6 {
   to { opacity: 1; }
 }
 
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 /* ---- CTA button ---- */
@@ -78,14 +114,49 @@ h1, h2, h3, h4, h5, h6 {
 .ring-fire {
   box-shadow:
     0 0 0 1px rgba(249, 115, 22, 0.3),
-    0 4px 12px rgba(0, 0, 0, 0.15);
+    0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ---- Glass card (light theme) ---- */
+.glass-card {
+  background: #ffffff;
+  border: 1px solid #e7e5e4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 /* ---- Section backgrounds ---- */
 .bg-warm {
-  background: linear-gradient(180deg, #1c1917 0%, #292524 100%);
+  background: linear-gradient(180deg, #fafaf9 0%, #f5f0eb 100%);
 }
 
 .bg-ember-glow {
-  background: radial-gradient(ellipse at 50% 100%, rgba(249, 115, 22, 0.06) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 100%, rgba(249, 115, 22, 0.08) 0%, transparent 60%);
+}
+
+/* ---- Colorful section accents ---- */
+.bg-navy-glow {
+  background: radial-gradient(ellipse at 50% 0%, rgba(51, 78, 104, 0.06) 0%, transparent 50%);
+}
+
+.bg-sunset-glow {
+  background: radial-gradient(ellipse at 80% 50%, rgba(251, 113, 133, 0.07) 0%, transparent 50%),
+              radial-gradient(ellipse at 20% 50%, rgba(249, 115, 22, 0.07) 0%, transparent 50%);
+}
+
+.gradient-text-sunset {
+  background: linear-gradient(135deg, #fb923c, #fb7185, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-navy {
+  background: linear-gradient(135deg, #627d98, #486581, #334e68);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.divider-gradient {
+  background: linear-gradient(90deg, transparent, #fb923c, #486581, #fb7185, transparent);
 }

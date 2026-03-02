@@ -1,12 +1,21 @@
 import { createClient } from "@supabase/supabase-js";
 
-export function getSupabaseClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+function getSupabaseUrl() {
+  return process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+}
 
-  if (!url || !anonKey) {
+export function getSupabasePublicClient() {
+  const url = getSupabaseUrl();
+  const publicKey =
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+
+  if (!url || !publicKey) {
     return null;
   }
 
-  return createClient(url, anonKey);
+  return createClient(url, publicKey);
 }
+
+// Backward-compatible alias used by existing modules.
+export const getSupabaseClient = getSupabasePublicClient;

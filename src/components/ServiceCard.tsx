@@ -1,4 +1,6 @@
-import { siteConfig } from "@/lib/config";
+"use client";
+
+import { useBooking } from "@/components/BookingProvider";
 
 type ServiceCardProps = {
   name: string;
@@ -6,6 +8,7 @@ type ServiceCardProps = {
   features: string[];
   price?: string;
   highlighted?: boolean;
+  fareharborItemId?: string;
 };
 
 export function ServiceCard({
@@ -14,32 +17,35 @@ export function ServiceCard({
   features,
   price,
   highlighted = false,
+  fareharborItemId,
 }: ServiceCardProps) {
+  const { openBooking } = useBooking();
+
   return (
     <div
-      className={`rounded-2xl p-8 transition-all duration-500 ${
+      className={`rounded-2xl p-8 transition-all duration-500 h-full flex flex-col ${
         highlighted
-          ? "ring-fire glass-card border-fire-500/40 animate-pulse-warm scale-[1.02]"
-          : "glass-card hover:border-fire-700/40"
+          ? "border-2 border-fire-500 bg-white shadow-md scale-[1.03] lg:scale-[1.04]"
+          : "glass-card hover:border-fire-500/30"
       }`}
     >
       {highlighted && (
-        <span className="inline-block bg-gradient-to-r from-fire-500 to-ember-500 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-5 uppercase tracking-[0.15em]">
+        <span className="inline-block bg-gradient-to-r from-fire-500 to-ember-500 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-5 uppercase tracking-[0.15em] self-start">
           Most Popular
         </span>
       )}
-      <h3 className="text-2xl font-bold text-ash-100 mb-2 uppercase tracking-wide">
+      <h3 className="text-2xl font-bold text-stone-900 mb-2 uppercase tracking-wide">
         {name}
       </h3>
       {price && (
-        <p className="text-3xl font-bold bg-gradient-to-r from-fire-400 to-ember-400 bg-clip-text text-transparent mb-5">
+        <p className="text-3xl font-bold bg-gradient-to-r from-fire-600 to-ember-500 bg-clip-text text-transparent mb-5">
           {price}
         </p>
       )}
-      <p className="text-ash-200/60 mb-6 font-light leading-relaxed">{description}</p>
-      <ul className="space-y-3 mb-8">
+      <p className="text-stone-500 mb-6 font-light leading-relaxed">{description}</p>
+      <ul className="space-y-3 mb-8 flex-1">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-3 text-ash-200/80">
+          <li key={index} className="flex items-start gap-3 text-stone-600">
             <svg
               className="w-5 h-5 text-fire-500 flex-shrink-0 mt-0.5"
               fill="currentColor"
@@ -55,19 +61,18 @@ export function ServiceCard({
           </li>
         ))}
       </ul>
-      <a
-        href={siteConfig.fareharborUrl}
-        className={`inline-flex items-center justify-center w-full font-bold rounded-lg py-4 transition-all duration-300 uppercase tracking-[0.12em] text-sm ${
+      <button
+        type="button"
+        onClick={() => openBooking(fareharborItemId)}
+        className={`inline-flex items-center justify-center w-full font-bold rounded-lg py-4 transition-all duration-300 uppercase tracking-[0.12em] text-sm cursor-pointer ${
           highlighted
             ? "btn-fire text-white shadow-lg shadow-fire-600/20"
-            : "bg-ash-800 text-ash-200 hover:bg-fire-600 hover:text-white border border-ash-700 hover:border-fire-600"
+            : "bg-stone-100 text-stone-700 hover:bg-fire-600 hover:text-white border border-stone-200 hover:border-fire-600"
         }`}
-        target="_blank"
-        rel="noopener noreferrer"
         aria-label={`Book ${name}`}
       >
         Book Now
-      </a>
+      </button>
     </div>
   );
 }

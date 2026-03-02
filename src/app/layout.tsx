@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Oswald, Raleway } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { BookingProvider } from "@/components/BookingProvider";
 import { siteConfig } from "@/lib/config";
 import "./globals.css";
 
@@ -65,9 +67,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${oswald.variable} ${raleway.variable}`}>
       <body className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <BookingProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </BookingProvider>
+        <Script
+          src="https://static.elfsight.com/platform/platform.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

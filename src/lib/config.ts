@@ -6,10 +6,10 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_SITE_URL || "https://30abonfireservice.com",
   fareharborShortname:
     process.env.NEXT_PUBLIC_FAREHARBOR_SHORTNAME || "destinbonfirecompany",
+  fareharborRef: "30Abonfires",
   fareharborUrl:
     process.env.NEXT_PUBLIC_FAREHARBOR_CHECKOUT_URL ||
-    `https://fareharbor.com/embeds/book/${process.env.NEXT_PUBLIC_FAREHARBOR_SHORTNAME || "destinbonfirecompany"}/`,
-  fareharborRef: process.env.NEXT_PUBLIC_FAREHARBOR_REF || "30abonfireservice",
+    `https://fareharbor.com/embeds/book/${process.env.NEXT_PUBLIC_FAREHARBOR_SHORTNAME || "destinbonfirecompany"}/?ref=30Abonfires`,
   phone: "(850) 706-1325",
   email: "hello@30abonfires.com", // TODO: Replace with real email
   address: {

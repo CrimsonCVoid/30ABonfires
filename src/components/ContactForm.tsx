@@ -87,7 +87,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
             name="name"
             required
             disabled={isPending}
-            className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder-stone-400 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
+            className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3.5 min-h-[48px] text-stone-900 text-base placeholder-stone-400 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
             placeholder="Your name"
           />
         </div>
@@ -104,7 +104,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
             id="phone"
             name="phone"
             disabled={isPending}
-            className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder-stone-400 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
+            className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3.5 min-h-[48px] text-stone-900 text-base placeholder-stone-400 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
             placeholder="(850) 555-0000"
           />
         </div>
@@ -123,7 +123,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
           name="email"
           required
           disabled={isPending}
-          className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder-stone-400 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
+          className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3.5 min-h-[48px] text-stone-900 text-base placeholder-stone-400 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
           placeholder="you@email.com"
         />
       </div>
@@ -140,7 +140,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
             id="preferred_town"
             name="preferred_town"
             disabled={isPending}
-            className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
+            className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3.5 min-h-[48px] text-stone-900 text-base focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
           >
             <option value="">Select a town...</option>
             {towns.map((town) => (
@@ -163,7 +163,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
             id="date_requested"
             name="date_requested"
             disabled={isPending}
-            className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
+            className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3.5 min-h-[48px] text-stone-900 text-base focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50"
           />
         </div>
       </div>
@@ -180,7 +180,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
           name="message"
           rows={4}
           disabled={isPending}
-          className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 text-stone-900 placeholder-stone-400 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50 resize-vertical"
+          className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3.5 text-stone-900 text-base placeholder-stone-400 focus:border-fire-500 focus:ring-2 focus:ring-fire-500/20 outline-none transition-colors disabled:opacity-50 resize-vertical"
           placeholder="Tell us about your event—group size, occasion, special requests..."
         />
       </div>
@@ -188,7 +188,7 @@ export function ContactForm({ sourcePage = "contact" }: ContactFormProps) {
       <button
         type="submit"
         disabled={isPending}
-        className="w-full btn-fire text-white px-8 py-3 rounded-lg font-semibold text-lg shadow-md shadow-fire-600/20 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full btn-fire text-white px-8 py-4 min-h-[52px] rounded-lg font-semibold text-lg shadow-md shadow-fire-600/20 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isPending ? "Sending..." : "Send Message"}
       </button>

@@ -65,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${oswald.variable} ${raleway.variable}`}>
+    <html lang="en" className={`${oswald.variable} ${raleway.variable}`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col">
         <BookingProvider>
           <Header />

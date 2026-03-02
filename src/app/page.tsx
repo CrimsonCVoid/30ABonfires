@@ -27,10 +27,20 @@ export default function HomePage() {
       <HeroSection
         title="Beach Bonfires on 30A"
         subtitle="We set up a private beach bonfire with Adirondack chairs, s'mores, and everything you need for an unforgettable evening on the Emerald Coast."
-        backgroundVideo="/videos/DestinBonfirevideo1.mp4"
+        backgroundVideo="/videos/hero-1.mp4"
         fullHeight
       >
         <CTAButtons variant="hero" className="justify-center" />
+        <a
+          href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
+          className="inline-flex items-center gap-2 text-white/80 hover:text-white mt-6 text-lg font-light tracking-wide transition-colors"
+          aria-label={`Call us at ${siteConfig.phone}`}
+        >
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          {siteConfig.phone}
+        </a>
       </HeroSection>
 
       {/* Google Reviews — First thing after scroll */}
